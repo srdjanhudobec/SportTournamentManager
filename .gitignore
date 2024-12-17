@@ -20,6 +20,10 @@ bld/
 .vs/
 .vs/*
 
+**/appsettings.json
+# Ignore migration files
+**/Migrations/
+
 # OS-generated files
 .DS_Store
 Thumbs.db
@@ -35,6 +39,4 @@ node_modules/
 # Ignore launchSettings.json
 **/Properties/launchSettings.json
 
-# Ignore appsettings.json files
-**/appsettings.json
 
