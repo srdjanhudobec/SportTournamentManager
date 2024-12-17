@@ -5,7 +5,7 @@ using System.Security.Claims;
 
 namespace SportTournamentAPI.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TimController : ControllerBase
@@ -16,6 +16,7 @@ namespace SportTournamentAPI.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         [HttpGet("get-all")]
         public async Task<IActionResult> GetAll() {
             var response = await _service.getAll();
@@ -24,8 +25,23 @@ namespace SportTournamentAPI.Controllers
                 : NotFound("Doslo je do greske prilikom dobavljanja timova.");
         }
 
+        [HttpGet("get-timovi-by-ucesnik")]
+        public async Task<IActionResult> GetTimoviByUcesnik()
+        {
+            var ucesnikUserName = HttpContext.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            
+            if (string.IsNullOrEmpty(ucesnikUserName))
+            {
+                return Unauthorized("Username nije pronađen u JWT tokenu.");
+            }
+
+            var response = await _service.getTimoviByUcesnik(ucesnikUserName);
+            return response != null
+                ? Ok(response)
+                : NotFound("Doslo je do greske prilikom dobavljanja timova.");
+        }
+
         [HttpPost("join-team")]
-        [Authorize]
         public async Task<IActionResult> joinTeam(int timId)
         {
             try

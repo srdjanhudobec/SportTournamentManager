@@ -6,6 +6,8 @@ namespace DataAccessLayer.Repository.Interface
     {
         Task<IEnumerable<Tim>> getAll();
 
+        Task<IEnumerable<Tim>> getTimoviByUcesnik(string ucesnikUserName);
+
         Task<Tim> joinTim(int timId,string ucesnikUserName);
     }
 }

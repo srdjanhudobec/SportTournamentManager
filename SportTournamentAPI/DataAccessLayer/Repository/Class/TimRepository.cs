@@ -2,6 +2,7 @@
 using DataAccessLayer.Model;
 using DataAccessLayer.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DataAccessLayer.Repository.Class
 {
@@ -22,6 +23,13 @@ namespace DataAccessLayer.Repository.Class
             return timovi;
         }
 
+        public async Task<IEnumerable<Tim>> getTimoviByUcesnik(string ucesnikUserName)
+        {
+            return await _context.Timovi
+                .Include(t => t.ucesnici)
+                .Where(t => t.ucesnici.Any(u => u.UserName == ucesnikUserName))
+                .ToListAsync();
+        }
 
         public async Task<Tim> joinTim(int timId, string ucesnikUserName)
         {

@@ -7,6 +7,8 @@ namespace BusinessLogicLayer.Service.Interface
     {
         Task<IEnumerable<TimGetResponse>> getAll();
 
+        Task<IEnumerable<TimGetResponse>> getTimoviByUcesnik(string ucesnikUserName);
+
         Task<TimGetResponse> joinTim(int timId, string ucesnikUserName);
     }
 }

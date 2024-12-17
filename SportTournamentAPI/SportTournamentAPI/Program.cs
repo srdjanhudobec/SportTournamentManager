@@ -23,6 +23,8 @@ builder.Services.AddScoped<IUcesnikRepository, UcesnikRepository>();
 builder.Services.AddScoped<IUcesnikService, UcesnikService>();
 builder.Services.AddScoped<ITimRepository, TimRepository>();
 builder.Services.AddScoped<ITimService, TimService>();
+builder.Services.AddScoped<ITimskiTurnirRepository, TimskiTurnirRepository>();
+builder.Services.AddScoped<ITimskiTurnirService, TimskiTurnirService>();
 builder.Services.AddAutoMapper(typeof(TimProfile));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,4 +1,6 @@
-﻿namespace DataAccessLayer.Model
+﻿using System.Text.Json.Serialization;
+
+namespace DataAccessLayer.Model
 {
     public class TimskiTurnir
     {
@@ -14,17 +16,19 @@
 
         public TipTurnira tipTurnira { get; set; }
 
-        public int prvoMestoId { get; set; }
+        public int? prvoMestoId { get; set; }
 
         public Tim prvoMesto { get; set; }
 
-        public int drugoMestoId { get; set; }
+        public int? drugoMestoId { get; set; }
 
         public Tim drugoMesto { get; set; }
 
-        public int treceMestoId { get; set; }
+        public int? treceMestoId { get; set; }
 
         public Tim treceMesto { get; set; }
+
+        [JsonIgnore]
 
         public ICollection<Tim> timovi { get; set; }
     }
