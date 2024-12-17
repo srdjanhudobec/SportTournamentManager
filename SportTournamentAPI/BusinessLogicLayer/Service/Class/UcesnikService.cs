@@ -12,14 +12,14 @@ namespace BusinessLogicLayer.Service.Class
         {
             _repository = repository;
         }
-        public Task<string> Login(UcesnikLoginDTO ucesnik)
+        public async Task<string> Login(UcesnikLoginDTO ucesnik)
         {
-            return _repository.Login(ucesnik);
+            return await _repository.Login(ucesnik);
         }
 
-        public Task<UcesnikRegisterDTO> RegisterUcesnik(UcesnikRegisterDTO ucesnik)
+        public async Task<UcesnikRegisterDTO> RegisterUcesnik(UcesnikRegisterDTO ucesnik)
         {
-            return _repository.RegisterUcesnik(ucesnik);
+            return await _repository.RegisterUcesnik(ucesnik);
         }
     }
 }

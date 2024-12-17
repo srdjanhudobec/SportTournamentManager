@@ -1,3 +1,4 @@
+using BusinessLogicLayer.Mapper;
 using BusinessLogicLayer.Service.Class;
 using BusinessLogicLayer.Service.Interface;
 using DataAccessLayer.Data;
@@ -20,7 +21,9 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(connectionString));
 builder.Services.AddScoped<IUcesnikRepository, UcesnikRepository>();
 builder.Services.AddScoped<IUcesnikService, UcesnikService>();
-
+builder.Services.AddScoped<ITimRepository, TimRepository>();
+builder.Services.AddScoped<ITimService, TimService>();
+builder.Services.AddAutoMapper(typeof(TimProfile));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
