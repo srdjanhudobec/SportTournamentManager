@@ -21,6 +21,7 @@ bld/
 .vs/*
 
 **/appsettings.json
+**/appsettings.Development.json
 # Ignore migration files
 **/Migrations/
 
