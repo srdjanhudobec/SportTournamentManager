@@ -29,4 +29,12 @@ node_modules/
 
 # Logs
 *.log
-/FOS.PL/.editorconfig
+# Ignore Visual Studio solution files
+*.sln
+
+# Ignore launchSettings.json
+**/Properties/launchSettings.json
+
+# Ignore appsettings.json files
+**/appsettings.json
+
