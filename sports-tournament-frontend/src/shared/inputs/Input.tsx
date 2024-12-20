@@ -32,16 +32,17 @@ export const SearchIcon = styled.img`
 interface TextInputProps extends ComponentPropsWithoutRef<"input"> {
   label?: string;
   errorMessage?:string;
+  search?:string;
 }
 
-const TextInput = ({ label, errorMessage,...props }: TextInputProps) => {
+const TextInput = ({ label, errorMessage, search,...props }: TextInputProps) => {
   
   return (
     <StyledDiv key={props.key}>
       {label && <label htmlFor={label}>{label}</label>}
       <StyledInput {...props} />
       {errorMessage && <div style={{color:"red"}}>{errorMessage}</div>}
-      <SearchIcon src={SearchLogo} alt="Search" />
+      {search ? <SearchIcon src={SearchLogo} alt="Search" /> : ''}
     </StyledDiv>
   );
 };

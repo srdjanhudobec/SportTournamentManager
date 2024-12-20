@@ -2,7 +2,7 @@ import { ComponentPropsWithoutRef } from "react";
 import styled from "styled-components";
 
 
-const StyledButton = styled.button<{ customStyle?: React.CSSProperties, hoverStyle?: React.CSSProperties }>`
+const StyledButton = styled.button<{ customstyle?: React.CSSProperties, hoverstyle?: React.CSSProperties }>`
   margin: 0.5em;
   border-radius: 8px;
   border-color: #8CC92D;
@@ -10,7 +10,7 @@ const StyledButton = styled.button<{ customStyle?: React.CSSProperties, hoverSty
   min-width: 5em;
   max-width: 15rem;
   color: #f2f1f2;
-  background-color: ${(props) => props.customStyle?.backgroundColor || "#8CC92D"};
+  background-color: ${(props) => props.customstyle?.backgroundColor || "#8CC92D"};
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -18,21 +18,21 @@ const StyledButton = styled.button<{ customStyle?: React.CSSProperties, hoverSty
 
 
   &:hover {
-    background-color: ${(props) => props.hoverStyle?.backgroundColor || "#2C2C2C"};
+    background-color: ${(props) => props.hoverstyle?.backgroundColor || "#2C2C2C"};
     cursor: pointer;
-    border-color: ${(props) => props.hoverStyle?.backgroundColor == "#8CC92D" ? "#2C2C2C" : "#8CC92D"};
+    border-color: ${(props) => props.hoverstyle?.backgroundColor == "#8CC92D" ? "#2C2C2C" : "#8CC92D"};
   }
 `;
 
 interface ButtonProps extends ComponentPropsWithoutRef<"button"> {
   children: JSX.Element | string;
-  customStyle?: React.CSSProperties; 
-  hoverStyle?: React.CSSProperties; 
+  customstyle?: React.CSSProperties; 
+  hoverstyle?: React.CSSProperties; 
 }
 
-const Button = ({ children, onClick, customStyle, hoverStyle, ...props }: ButtonProps) => {
+const Button = ({ children, onClick, customstyle, hoverstyle, ...props }: ButtonProps) => {
   return (
-    <StyledButton {...props} onClick={onClick} customStyle={customStyle} hoverStyle={hoverStyle}>
+    <StyledButton {...props} onClick={onClick} customstyle={customstyle} hoverstyle={hoverstyle}>
       {children}
     </StyledButton>
   );

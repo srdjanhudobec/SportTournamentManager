@@ -9,7 +9,7 @@ background-color: #8CC92D;
   font-weight: bold;
   font-size: 20px;
   height:70vh;
-  width:10%;
+  width:150px;
 `;
 
 const AdComponent = () => {
