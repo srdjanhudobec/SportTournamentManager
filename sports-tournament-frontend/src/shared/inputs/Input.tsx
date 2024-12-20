@@ -13,13 +13,14 @@ export const StyledDiv = styled.div`
     flex: 1 0 58%;
     width: 5rem;
   }
+  
 `;
 
 export const StyledInput = styled.input`
     background-color:#8CC92D;
     border-radius:25px;
     height:25px;
-
+    width:20vw;
 `;
 export const SearchIcon = styled.img`
     position:absolute;

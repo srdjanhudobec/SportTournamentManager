@@ -22,14 +22,15 @@ flex-direction:row;
 justify-content:space-evenly;
 background-color:#162936;
 opacity:0.85;
-gap:50px;
-height:100px;
+height:50px;
+padding: 0 40px;
 `;
 
 const StyledUl = styled.ul`
 display:flex;
 justify-content:space-between;
-padding:0 20px;
+padding:0;
+gap: 51px; 
 flex-wrap: nowrap;
 `;
 

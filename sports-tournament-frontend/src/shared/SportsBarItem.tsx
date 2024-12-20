@@ -14,6 +14,10 @@ align-items:center;
 justify-content:center;
 padding:5px;
 flex-wrap: nowrap;
+&>span{
+    display: inline;
+    white-space: nowrap;
+}
 `
 const Logo = styled.img`
     width:20px;
