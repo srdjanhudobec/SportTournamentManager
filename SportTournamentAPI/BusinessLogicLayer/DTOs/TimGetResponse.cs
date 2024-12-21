@@ -4,6 +4,7 @@ namespace BusinessLogicLayer.DTOs
 {
     public class TimGetResponse
     {
+        public string id { get; set; }
 
         public string naziv { get; set; }
 
