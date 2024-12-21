@@ -37,6 +37,7 @@ const LogoDiv = styled.div`
   justify-content: center;
   padding: 0 10px 0 25px;
   gap: 20px;
+  color:#ffff;
 `;
 
 const ActionDiv = styled.div`
@@ -49,18 +50,18 @@ let login = [
   {
     rest: {
       type: "text",
-      placeholder: "korisnicko ime",
+      placeholder: "User name",
       name: "korisnickoIme",
     },
-    label: "Korisnicko Ime",
+    label: "User name",
   },
   {
     rest: {
       type: "password",
-      placeholder: "lozinka",
+      placeholder: "password",
       name: "lozinka",
     },
-    label: "Lozinka",
+    label: "Password",
   },
 ];
 
@@ -74,34 +75,34 @@ let register = [
   {
     rest: {
       type: "text",
-      placeholder: "korisnicko ime",
+      placeholder: "User name",
       name: "korisnickoIme",
     },
-    label: "Korisnicko Ime",
+    label: "User name",
   },
   {
     rest: {
       type: "text",
-      placeholder: "lozinka",
+      placeholder: "password",
       name: "lozinka",
     },
-    label: "Lozinka",
+    label: "Password",
   },
   {
     rest: {
       type: "text",
-      placeholder: "Ime",
+      placeholder: "Name",
       name: "ime",
     },
-    label: "Ime",
+    label: "Name",
   },
   {
     rest: {
       type: "text",
-      placeholder: "prezime",
+      placeholder: "Last name",
       name: "prezime",
     },
-    label: "Prezime",
+    label: "Last name",
   },
   {
     rest: {
@@ -129,15 +130,17 @@ const Header = () => {
   return (
     <StyledHeader>
       <StyledHeaderDiv>
+        <Link to='/'>
         <LogoDiv>
           <Logo src={SiteLogo} alt="Site logo" />
           <h3>TIM 04</h3>
         </LogoDiv>
+        </Link>
         <TextInput search="da"></TextInput>
         <div>
           {isAuthenticated ? (
             <ActionDiv>
-              <Link to='/'><StyledSpan> MY TEAMS </StyledSpan></Link>
+              <Link to='/my-teams/'><StyledSpan> MY TEAMS </StyledSpan></Link>
               <Button onClick={logout}>Logout</Button>
             </ActionDiv>
           ) : (

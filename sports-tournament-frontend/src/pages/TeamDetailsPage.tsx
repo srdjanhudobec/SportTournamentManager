@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import AdComponent from "../shared/AdComponent";
-import TeamsList from "../components/TeamsList";
 import { useAuth } from "../contexts/AuthContext";
-
+import AdComponent from "../shared/AdComponent";
+import TeamDetails from "../components/TeamDetails";
 
 const StyledTeamsContainer = styled.div`
 display: flex;
@@ -13,20 +12,18 @@ padding: 0 60px;
 justify-content:space-between;
 width:100vw;
 `
-interface TeamsPageProps {
-    own?: boolean;  
-  }
 
-const TeamsPage = ({own}:TeamsPageProps) => {
+
+const TeamDetailsPage = () => {
     const {isAuthenticated} = useAuth();
 
     return (
         <StyledTeamsContainer>
             <AdComponent/>
-            {isAuthenticated ? own ? <TeamsList own={true}/> : <TeamsList/>  : <span>Login to see data.</span>}
+            {isAuthenticated ? <TeamDetails/> : <span>Login to see data.</span>}
             <AdComponent/>
         </StyledTeamsContainer>
     );
 }
 
-export default TeamsPage;
+export default TeamDetailsPage;

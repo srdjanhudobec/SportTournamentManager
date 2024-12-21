@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import TeamItem from "./TeamItem";
-import { getAllTeams, joinTeam } from "../src/data/TeamActions";
-import { Team } from "./interfaces/Team";
+import { getAllTeams, getUserTeams, joinTeam } from "../data/TeamActions";
+import { Team } from "../interfaces/Team";
+import { useAuth } from "../contexts/AuthContext";
 
 const StyledMainDiv = styled.div`
   flex: 4;
@@ -16,25 +17,34 @@ const StyledMainDiv = styled.div`
   border-radius: 10px;
 `;
 
+interface TeamsListProps {
+  own?: boolean;  
+}
 
-const TeamsList = () => {
+const TeamsList = ({own}:TeamsListProps) => {
   const [teams, setTeams] = useState<Team[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const {token} = useAuth();
 
   useEffect(() => {
     const fetchTeams = async () => {
-      const result = await getAllTeams();
-      console.log(result);
-      
+      let result;
+      if (own) {
+        result = await getUserTeams(token!); 
+      } else {
+        result = await getAllTeams(); 
+      }
+  
       if (typeof result === "string") {
         setError(result);
       } else {
-        setTeams(result); 
+        setTeams(result);
       }
     };
-
+  
     fetchTeams();
-  }, []);
+  }, [own]);  // Add 'own' to the dependency array
+  
 
 
 

@@ -46,13 +46,16 @@ namespace DataAccessLayer.Repository.Class
 
             if (tim == null)
             {
+                await Console.Out.WriteLineAsync("Ovde sam izasao 1");
                 return null;
             }
             var ucesnik = await _context.Ucesnici
                 .FirstOrDefaultAsync(u => u.UserName == ucesnikUserName); 
 
+            await Console.Out.WriteLineAsync(ucesnikUserName + " "+  ucesnik);
             if (ucesnik == null)
             {
+                await Console.Out.WriteLineAsync("Ovde sam izasao 2");
                 return null;
             }
             if (tim.ucesnici.FirstOrDefault(u => u.UserName == ucesnikUserName) != null) {

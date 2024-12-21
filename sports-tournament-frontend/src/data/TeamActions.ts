@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Team } from "../interfaces/Team"; 
-import { useAuth } from "../contexts/AuthContext"; 
 
 const API_BASE_URL = "http://localhost:5205/api/Tim";
 
@@ -18,8 +17,7 @@ export const getAllTeams = async (): Promise<Team[] | string> => {
   }
 };
 
-export const getUserTeams = async (): Promise<Team[] | string> => {
-  const { token } = useAuth(); 
+export const getUserTeams = async (token: string): Promise<Team[] | string> => {
   if (!token) {
     return "Authentication token is missing.";
   }
@@ -38,20 +36,18 @@ export const getUserTeams = async (): Promise<Team[] | string> => {
     return "Network error or server unavailable.";
   }
 };
-export const joinTeam = async (timId: number): Promise<Team | string> => {
-  const { token } = useAuth(); // Access the token from the AuthContext
-
+export const joinTeam = async (timId: number, token: string): Promise<Team | string> => {
   try {
     if (!token) {
       throw new Error('No token found');
     }
-
+    
     const response = await axios.post(
-      "http://localhost:5000/api/tim/join-team",
-      { timId },
-      {
+      `${API_BASE_URL}/join-team`,
+      null, 
+      { params: { timId }, 
         headers: {
-          Authorization: `Bearer ${token}`, // Add the token to the Authorization header
+          Authorization: `Bearer ${token}`,
         },
       }
     );
@@ -59,5 +55,24 @@ export const joinTeam = async (timId: number): Promise<Team | string> => {
     return response.data;
   } catch (error) {
     return "An error occurred while joining the team.";
+  }
+};
+
+export const getTeamById = async (id: number, token: string) => {
+  try {
+    console.log("Fetching team details for ID:", id);
+
+    const response = await axios.get(`${API_BASE_URL}/get-tim-by-id`, {
+      params: { id },
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    console.log("API response for getTeamById:", response.data);
+    return response.data; // Ensure this matches the structure of your `Team` object
+  } catch (error) {
+    console.error("Error in getTeamById API call:", error);
+    throw new Error("Error fetching team details");
   }
 };

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import ReactLogo from './assets/react.svg';
-import { joinTeam } from "./data/TeamActions";
-import Button from "./shared/ui/Button";
+import ReactLogo from '../assets/react.svg';
+import { Link } from "react-router-dom";
 
 const StyledTeamDiv = styled.div`
   display: flex;
@@ -12,26 +11,30 @@ const StyledTeamDiv = styled.div`
   padding: 10px 20px;
   color: white;
   border-bottom: 1px solid #2a3b50;
+  box-sizing: border-box;
+  height: 50px; 
 `;
 
 const LogoAndName = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-  
+  max-width: 60%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 100%; /* Ensure it fills the height of the parent */
 `;
+
+const StyledSpan = styled.span`
+  color:#8CC92D;
+`
 
 interface TeamItemProps {
   id: string;
   name: string;
   logo: string;
 }
-
-  const handleJoinTeam = async (timId: string) => {
-    const parsedTeamId = parseInt(timId, 10);
-    const result = await joinTeam(parsedTeamId);
-      console.log("Joined team:", result);
-  };
 
 const TeamItem = ({ id, name, logo }: TeamItemProps) => {
   return (
@@ -40,7 +43,7 @@ const TeamItem = ({ id, name, logo }: TeamItemProps) => {
         <img src={ReactLogo} alt={name} style={{ width: "30px", height: "30px" }} />
         <span>{name}</span>
       </LogoAndName>
-      <Button onClick={() => handleJoinTeam(id)}> Join team</Button>
+     <Link to={`/teams/${id}`}><StyledSpan> View details</StyledSpan></Link>
     </StyledTeamDiv>
   );
 };
