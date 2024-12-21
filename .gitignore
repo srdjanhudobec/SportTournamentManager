@@ -19,6 +19,8 @@ bld/
 # Visual Studio temporary files and folders
 .vs/
 .vs/*
+.vscode/
+.vscode/*
 
 **/appsettings.json
 **/appsettings.Development.json
