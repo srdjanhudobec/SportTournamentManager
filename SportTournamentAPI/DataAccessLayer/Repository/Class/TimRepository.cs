@@ -23,6 +23,13 @@ namespace DataAccessLayer.Repository.Class
             return timovi;
         }
 
+        public async Task<Tim> getTimById(int id)
+        {
+            return await _context.Timovi
+                .Include(t => t.ucesnici)
+                .FirstOrDefaultAsync(u => u.id == id);
+        }
+
         public async Task<IEnumerable<Tim>> getTimoviByUcesnik(string ucesnikUserName)
         {
             return await _context.Timovi

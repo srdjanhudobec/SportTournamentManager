@@ -25,6 +25,15 @@ namespace SportTournamentAPI.Controllers
                 : NotFound("Doslo je do greske prilikom dobavljanja timova.");
         }
 
+        [HttpGet("get-tim-by-id")]
+        public async Task<IActionResult> GetTimById(int id)
+        {
+            var response = await _service.getTimById(id);
+            return response != null
+                ? Ok(response)
+                : NotFound("Doslo je do greske prilikom dobavljanja tima.");
+        }
+
         [HttpGet("get-timovi-by-ucesnik")]
         public async Task<IActionResult> GetTimoviByUcesnik()
         {

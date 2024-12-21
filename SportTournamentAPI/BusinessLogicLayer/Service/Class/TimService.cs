@@ -21,6 +21,13 @@ namespace BusinessLogicLayer.Service.Class
             return timGetResponses;
         }
 
+        public async Task<TimGetResponse> getTimById(int id)
+        {
+            var tim = await _repository.getTimById(id);
+            var timGetResponse = _mapper.Map<TimGetResponse>(tim);
+            return timGetResponse;
+        }
+
         public async Task<IEnumerable<TimGetResponse>> getTimoviByUcesnik(string ucesnikUserName)
         {
             var tims = await _repository.getTimoviByUcesnik(ucesnikUserName);
