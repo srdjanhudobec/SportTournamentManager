@@ -60,7 +60,6 @@ export const joinTeam = async (timId: number, token: string): Promise<Team | str
 
 export const getTeamById = async (id: number, token: string) => {
   try {
-    console.log("Fetching team details for ID:", id);
 
     const response = await axios.get(`${API_BASE_URL}/get-tim-by-id`, {
       params: { id },
@@ -69,10 +68,8 @@ export const getTeamById = async (id: number, token: string) => {
       },
     });
 
-    console.log("API response for getTeamById:", response.data);
-    return response.data; // Ensure this matches the structure of your `Team` object
+    return response.data; 
   } catch (error) {
-    console.error("Error in getTeamById API call:", error);
     throw new Error("Error fetching team details");
   }
 };

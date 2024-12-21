@@ -83,7 +83,6 @@ const TeamDetails = () => {
           Number(teamId),
           token!
         );
-        console.log(tournamentsResponse);
         
         setTournaments(tournamentsResponse);
       } catch (error) {

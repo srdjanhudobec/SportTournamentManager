@@ -38,7 +38,6 @@ const LoginForm = ({
       login(postData, response);
       handleSubmitForm(postData); 
       handleCancel();
-      console.log(response); 
     } catch (err) {
       setError("Login failed. Please try again."); 
       console.error(err);

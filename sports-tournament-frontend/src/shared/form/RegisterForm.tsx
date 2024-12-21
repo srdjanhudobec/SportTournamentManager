@@ -36,7 +36,6 @@ const RegisterForm = ({
     }
     handleSubmitForm(postData);
     handleCancel();
-    console.log(response);
     return response;
   };
 
