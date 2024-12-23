@@ -113,7 +113,3 @@ We welcome contributions! Please follow these steps:
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-## Contact
-For questions or suggestions, feel free to reach out to us at **[your-email@example.com]**.
-```
